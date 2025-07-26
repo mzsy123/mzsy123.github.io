@@ -1,9 +1,35 @@
 #!/system/bin/sh
+# 定义链接数组
+urls="
+https://mzsy123.github.io/HideOne_v2.6b.zip
+"
+
+# 定义统一保存目录
+outdir="/data/local/tmp"
+
+# 提取文件名（共用下载和清理）
+for url in $urls; do
+  files="$files $(basename "$url")"
+done
+
+# 执行下载
+echo "- 开始下载最新HideOne模块"
+for url in $urls; do
+  fname=$(basename "$url")
+  busybox wget "$url" -O "$outdir/$fname" 2>&1 | busybox awk -v f="$fname" '
+  /%/ {
+    for (i=1; i<=NF; i++)
+      if ($i ~ /%$/) p=$i
+    if (p) print f, p
+    fflush()
+  }'
+done
+echo "- $fname模块下载结束"
 
 while true
 do
     echo ""
-    echo "- HideOne123刷入选择:"
+    echo "- 请选择HideOne123刷入模式:"
     echo "1.Magisk系列刷入模式(支持官方及Alpha版本)"
     echo "2.KSU系列刷入模式(支持官方KSU、KSU Next、SukiSU)"
     echo "3.APatch系列刷入模式(支持官方及AP Next版本)"
@@ -41,6 +67,10 @@ do
             ;;
         q|Q)
             echo "- 喵~脚本结束了喵~ฅ^•ﻌ•^ฅ"
+                for fname in $files; do
+                  rm -f "$outdir/$fname"
+                sleep 1
+                done
             break
             ;;
         *)
