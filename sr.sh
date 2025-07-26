@@ -26,10 +26,11 @@ for url in $urls; do
 done
 echo "- $fname模块下载结束"
 sleep 1
+clear
 
 while true
 do
-    echo ""
+    # echo ""
     echo "- 请选择$fname刷入模式:"
     echo "1.Magisk系列刷入模式(支持官方及Alpha版本)"
     echo "2.KSU系列刷入模式(支持官方KSU、KSU Next、SukiSU)"
