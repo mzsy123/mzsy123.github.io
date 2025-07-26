@@ -1,4 +1,16 @@
 #!/system/bin/sh
+print_hideone() {
+cat << "EOF"
+  _    _ _     _       ____             
+ | |  | (_)   | |     / __ \            
+ | |__| |_  __| | ___| |  | |_ __   ___ 
+ |  __  | |/ _` |/ _ \ |  | | '_ \ / _ \
+ | |  | | | (_| |  __/ |__| | | | |  __/
+ |_|  |_|_|\__,_|\___|\____/|_| |_|\___|
+                                        
+                                        
+EOF
+}
 # 定义链接数组
 urls="
 https://mzsy123.github.io/HideOne_v2.6b.zip
@@ -45,6 +57,8 @@ do
     case "$choice" in
         1)
             {
+                clear
+                print_hideone
                 echo "- 即将执行Magisk刷入模式 喵~"
                 sleep 1
                 magisk --install-module "$outdir/$fname"
@@ -53,6 +67,8 @@ do
             ;;
         2)
             {
+                clear
+                print_hideone
                 echo "- 即将执行KSU刷入模式 喵~"
                 sleep 1
                 ksud module install "$outdir/$fname"
@@ -61,6 +77,8 @@ do
             ;;
         3)
             {
+                clear
+                print_hideone
                 echo "- 即将执行APatch刷入模式 喵~"
                 sleep 1
                 apd module install "$outdir/$fname"
