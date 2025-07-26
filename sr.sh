@@ -25,6 +25,7 @@ for url in $urls; do
   }'
 done
 echo "- $fname模块下载结束"
+sleep 1
 
 while true
 do
@@ -45,7 +46,7 @@ do
             {
                 echo "- 即将执行Magisk刷入模式 喵~"
                 sleep 1
-                magisk --install-module "/data/local/tmp/HideOne123.zip"
+                magisk --install-module "$outdir/$fname"
                 exit
             }
             ;;
@@ -53,7 +54,7 @@ do
             {
                 echo "- 即将执行KSU刷入模式 喵~"
                 sleep 1
-                ksud module install "/data/local/tmp/HideOne123.zip"
+                ksud module install "$outdir/$fname"
                 exit
             }
             ;;
@@ -61,7 +62,7 @@ do
             {
                 echo "- 即将执行APatch刷入模式 喵~"
                 sleep 1
-                ap module install "/data/local/tmp/HideOne123.zip"
+                apd module install "$outdir/$fname"
                 exit
             }
             ;;
