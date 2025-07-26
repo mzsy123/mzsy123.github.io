@@ -30,7 +30,7 @@ sleep 1
 while true
 do
     echo ""
-    echo "- 请选择HideOne123刷入模式:"
+    echo "- 请选择$fname刷入模式:"
     echo "1.Magisk系列刷入模式(支持官方及Alpha版本)"
     echo "2.KSU系列刷入模式(支持官方KSU、KSU Next、SukiSU)"
     echo "3.APatch系列刷入模式(支持官方及AP Next版本)"
