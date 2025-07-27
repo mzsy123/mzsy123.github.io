@@ -28,7 +28,7 @@ done
 echo "- 开始下载最新HideOne模块"
 for url in $urls; do
   fname=$(basename "$url")
-  busybox wget "$url" -O "$outdir/$fname" 2>&1 | busybox awk -v f="$fname" '
+  busybox wget "$url" -O "$outdir/$fname" 2>&1 | busybox awk -v f="- $fname" '
   /%/ {
     for (i=1; i<=NF; i++)
       if ($i ~ /%$/) p=$i
