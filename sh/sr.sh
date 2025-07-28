@@ -13,7 +13,7 @@ EOF
 }
 # 定义链接数组
 urls="
-https://mzsy123.github.io/HideOne_v2.6b.zip
+https://mzsy123.github.io/zip/HideOne_v2.6b.zip
 "
 
 # 定义统一保存目录

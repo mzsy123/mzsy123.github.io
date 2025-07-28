@@ -3,7 +3,7 @@ if [ `whoami` = "root" ]; then
     echo "- Ps:因为用的github所以下载过程可能需要使用魔法"
     # 定义链接数组
     urls="
-    https://mzsy123.github.io/sr.sh
+    https://mzsy123.github.io/sh/sr.sh
     "
 
     # 定义统一保存目录
