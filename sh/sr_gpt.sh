@@ -19,7 +19,7 @@ REPO="HideOne123"
 ASSET_EXT=".zip"
 
 # 定义链接数组
-echo "- 正在获取最新发行版地址"
+echo "- 正在获取最新发行版地址..."
 
 # 自动选择 curl/wget/busybox wget 获取 release JSON
 if command -v curl >/dev/null 2>&1; then

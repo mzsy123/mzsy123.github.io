@@ -12,7 +12,7 @@ cat << "EOF"
 EOF
 }
 # 定义链接数组
-echo "- 正在获取最新发行版地址"
+echo "- 正在获取最新发行版地址..."
 NEW_URL=$(curl -s https://api.github.com/repos/mzsy123/HideOne123/releases/latest | grep "browser_download_url" | cut -d '"' -f 4)
 echo "- 获取完成惹~"
 sleep 0.3
