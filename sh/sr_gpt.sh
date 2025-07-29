@@ -86,7 +86,7 @@ do
                 echo "- 即将执行Magisk刷入模式 喵~"
                 sleep 1
                 magisk --install-module "$outdir/$fname"
-                exit
+                # exit
             }
             ;;
         2)
@@ -96,7 +96,7 @@ do
                 echo "- 即将执行KSU刷入模式 喵~"
                 sleep 1
                 ksud module install "$outdir/$fname"
-                exit
+                # exit
             }
             ;;
         3)
@@ -106,7 +106,7 @@ do
                 echo "- 即将执行APatch刷入模式 喵~"
                 sleep 1
                 apd module install "$outdir/$fname"
-                exit
+                # exit
             }
             ;;
         q|Q)
