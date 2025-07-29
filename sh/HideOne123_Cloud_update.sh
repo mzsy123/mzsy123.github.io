@@ -2,9 +2,7 @@ if [ `whoami` = "root" ]; then
     echo "- 开始下载"
     echo "- Ps:因为用的github所以下载过程可能需要使用魔法"
     # 定义链接数组
-    urls="
-    https://mzsy123.github.io/sh/sr.sh
-    "
+    urls="https://mzsy123.github.io/sh/sr_gpt.sh"# 默认为GPT优化版本可改为sr.sh为普通版
 
     # 定义统一保存目录
     outdir="/data/local/tmp"
@@ -31,7 +29,7 @@ if [ `whoami` = "root" ]; then
         echo "- $fname文件不存在"
     fi
     echo "- 正在执行核心程序"
-    sh /data/local/tmp/sr.sh
+    sh "$outdir/$fname"
     sleep 1
     echo "- 执行结束"
     sleep 0.5

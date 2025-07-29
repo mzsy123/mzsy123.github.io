@@ -1,4 +1,5 @@
 #!/system/bin/sh
+
 print_hideone() {
 cat << "EOF"
   _    _ _     _       ____             
@@ -11,9 +12,30 @@ cat << "EOF"
                                         
 EOF
 }
+
+# 设置仓库变量
+USER="mzsy123"
+REPO="HideOne123"
+ASSET_EXT=".zip"
+
 # 定义链接数组
 echo "- 正在获取最新发行版地址"
-NEW_URL=$(curl -s https://api.github.com/repos/mzsy123/HideOne123/releases/latest | grep "browser_download_url" | cut -d '"' -f 4)
+
+# 自动选择 curl/wget/busybox wget 获取 release JSON
+if command -v curl >/dev/null 2>&1; then
+    JSON=$(curl -s "https://api.github.com/repos/$USER/$REPO/releases/latest")
+elif command -v wget >/dev/null 2>&1; then
+    JSON=$(wget -qO- "https://api.github.com/repos/$USER/$REPO/releases/latest")
+elif command -v busybox >/dev/null 2>&1 && busybox wget --help >/dev/null 2>&1; then
+    JSON=$(busybox wget -qO- "https://api.github.com/repos/$USER/$REPO/releases/latest")
+else
+    echo "- 喵呜~无法获取 JSON，curl/wget 都不可用！"
+    exit 1
+fi
+
+# 解析下载链接
+NEW_URL=$(echo "$JSON" | grep "browser_download_url" | cut -d '"' -f 4 | grep "$ASSET_EXT")
+
 echo "- 获取完成"
 sleep 0.3
 
@@ -21,6 +43,7 @@ sleep 0.3
 outdir="/data/local/tmp"
 
 # 提取文件名（共用下载和清理）
+files=""
 for url in $NEW_URL; do
   files="$files $(basename "$url")"
 done
@@ -88,10 +111,10 @@ do
             ;;
         q|Q)
             echo "- 喵~脚本结束了喵~ฅ^•ﻌ•^ฅ"
-                for fname in $files; do
-                  rm -f "$outdir/$fname"
-                sleep 1
-                done
+            for fname in $files; do
+              rm -f "$outdir/$fname"
+              sleep 1
+            done
             break
             ;;
         *)
