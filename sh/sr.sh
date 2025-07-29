@@ -14,7 +14,7 @@ EOF
 # 定义链接数组
 echo "- 正在获取最新发行版地址"
 NEW_URL=$(curl -s https://api.github.com/repos/mzsy123/HideOne123/releases/latest | grep "browser_download_url" | cut -d '"' -f 4)
-echo "- 获取完成"
+echo "- 获取完成惹~"
 sleep 0.3
 
 # 定义统一保存目录
@@ -37,7 +37,7 @@ for url in $NEW_URL; do
     fflush()
   }'
 done
-echo "- $fname模块下载结束"
+echo "- $fname模块下载结束惹 喵~"
 sleep 1
 clear
 
@@ -63,6 +63,10 @@ do
                 echo "- 即将执行Magisk刷入模式 喵~"
                 sleep 1
                 magisk --install-module "$outdir/$fname"
+                for fname in $files; do
+                  rm -f "$outdir/$fname"
+                  sleep 1
+                done
                 exit
             }
             ;;
@@ -73,6 +77,10 @@ do
                 echo "- 即将执行KSU刷入模式 喵~"
                 sleep 1
                 ksud module install "$outdir/$fname"
+                for fname in $files; do
+                  rm -f "$outdir/$fname"
+                  sleep 1
+                done
                 exit
             }
             ;;
@@ -83,6 +91,10 @@ do
                 echo "- 即将执行APatch刷入模式 喵~"
                 sleep 1
                 apd module install "$outdir/$fname"
+                for fname in $files; do
+                  rm -f "$outdir/$fname"
+                  sleep 1
+                done
                 exit
             }
             ;;

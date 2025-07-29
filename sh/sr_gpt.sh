@@ -36,7 +36,7 @@ fi
 # 解析下载链接
 NEW_URL=$(echo "$JSON" | grep "browser_download_url" | cut -d '"' -f 4 | grep "$ASSET_EXT")
 
-echo "- 获取完成"
+echo "- 获取完成惹~"
 sleep 0.3
 
 # 定义统一保存目录
@@ -60,7 +60,7 @@ for url in $NEW_URL; do
     fflush()
   }'
 done
-echo "- $fname模块下载结束"
+echo "- $fname模块下载结束惹 喵~"
 sleep 1
 clear
 
@@ -86,7 +86,11 @@ do
                 echo "- 即将执行Magisk刷入模式 喵~"
                 sleep 1
                 magisk --install-module "$outdir/$fname"
-                # exit
+                for fname in $files; do
+                  rm -f "$outdir/$fname"
+                  sleep 1
+                done
+                exit
             }
             ;;
         2)
@@ -96,7 +100,11 @@ do
                 echo "- 即将执行KSU刷入模式 喵~"
                 sleep 1
                 ksud module install "$outdir/$fname"
-                # exit
+                for fname in $files; do
+                  rm -f "$outdir/$fname"
+                  sleep 1
+                done
+                exit
             }
             ;;
         3)
@@ -106,7 +114,11 @@ do
                 echo "- 即将执行APatch刷入模式 喵~"
                 sleep 1
                 apd module install "$outdir/$fname"
-                # exit
+                for fname in $files; do
+                  rm -f "$outdir/$fname"
+                  sleep 1
+                done
+                exit
             }
             ;;
         q|Q)
